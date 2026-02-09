@@ -1,44 +1,40 @@
-name: SonarQube
+name: SonarCloud
+
 on:
     push:
         branches:
-            - master
+            - "main"
     pull_request:
         types: [opened, synchronize, reopened]
 
 jobs:
-    build:
-        name: Build and analyze
+    sonarcloud:
+        name: SonarCloud Analysis
         runs-on: ubuntu-latest
+
         steps:
             - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
 
             - name: Set up JDK 21
               uses: actions/setup-java@v4
               with:
+                  distribution: "temurin"
                   java-version: 21
-                  distribution: "zulu"
-
-            - name: Cache SonarQube packages
-              uses: actions/cache@v4
-              with:
-                  path: ~/.sonar/cache
-                  key: ${{ runner.os }}-sonar
-                  restore-keys: ${{ runner.os }}-sonar
 
             - name: Cache Gradle packages
-              uses: actions/cache@v4
+              uses: actions/cache@v3
               with:
-                  path: ~/.gradle/caches
-                  key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-                  restore-keys: ${{ runner.os }}-gradle
+                  path: |
+                      ~/.gradle/caches
+                      ~/.gradle/wrapper
+                  key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+                  restore-keys: |
+                      ${{ runner.os }}-gradle
 
-            - name: Make gradlew executable
-              run: chmod +x ./gradlew
+            - name: Grant execute permission for gradlew
+              run: chmod +x gradlew
 
-            - name: Build and analyze
+            - name: Run Tests and SonarCloud Analysis
+              run: ./gradlew clean test jacocoTestReport sonarqube
               env:
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-              run: ./gradlew build sonar --info --stacktrace
