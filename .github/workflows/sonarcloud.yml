@@ -3,7 +3,7 @@ name: SonarCloud
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -28,16 +28,15 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build and run tests
-        run: ./gradlew clean build jacocoTestReport
+        run: ./gradlew clean build test
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-reports
+          name: build-artifacts
           path: |
-            build/reports/
-            build/jacoco/
             build/classes/
+            build/test-results/
           retention-days: 1
 
   sonar:
@@ -60,7 +59,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: build-reports
+          name: build-artifacts
           path: build/
 
       - name: Grant execute permission for Gradle
