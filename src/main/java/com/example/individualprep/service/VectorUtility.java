@@ -8,19 +8,19 @@ public class VectorUtility {
     // Add two vectors
     public double[] add(double[] v1, double[] v2) {
         // TODO: Implement me properly!
-        return new double[] { 0.0, 0.0, 0.0 };
+        return new double[]{0.0, 0.0, 0.0};
     }
 
     // Substract two vectors
     public double[] subtract(double[] v1, double[] v2) {
         // TODO: Implement me properly!
-        return new double[] { 0.0, 0.0, 0.0 };
+        return new double[]{0.0, 0.0, 0.0};
     }
 
     // Multiply two vectors
     public double[] multiply(double[] v1, int x) {
         // TODO: Implement me properly!
-        return new double[] { 0.0, 0.0, 0.0 };
+        return new double[]{0.0, 0.0, 0.0};
     }
 
     // Dot product of two vectors
