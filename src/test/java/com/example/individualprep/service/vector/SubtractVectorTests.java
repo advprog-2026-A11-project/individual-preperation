@@ -1,4 +1,4 @@
-package com.example.individualprep.service;
+package com.example.individualprep.service.vector;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,12 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import com.example.individualprep.service.VectorUtility;
+
 class SubtractVectorTests {
 
   private final VectorUtility util = new VectorUtility();
 
   @Test
-  @DisplayName("subtract: positive numbers")
   void subtractPositiveNumbers() {
     double[] v1 = { 5.0, 4.0, 3.0 };
     double[] v2 = { 1.0, 2.0, 3.0 };
@@ -23,7 +24,6 @@ class SubtractVectorTests {
   }
 
   @Test
-  @DisplayName("subtract: negative numbers and mixed signs")
   void subtractNegativeAndMixed() {
     double[] v1 = { -1.0, -2.0, 7.5 };
     double[] v2 = { -3.0, 4.0, -2.5 };
@@ -33,7 +33,6 @@ class SubtractVectorTests {
   }
 
   @Test
-  @DisplayName("subtract: empty vectors (edge case)")
   void subtractEmptyVectors() {
     double[] v1 = new double[0];
     double[] v2 = new double[0];
@@ -43,7 +42,6 @@ class SubtractVectorTests {
   }
 
   @Test
-  @DisplayName("subtract: mismatched lengths throws IllegalArgumentException")
   void subtractMismatchedLengthsThrows() {
     double[] v1 = { 1.0, 2.0 };
     double[] v2 = { 1.0 };
@@ -54,7 +52,6 @@ class SubtractVectorTests {
   }
 
   @Test
-  @DisplayName("subtract: single-element vectors")
   void subtractSingleElement() {
     double[] v1 = { 42.0 };
     double[] v2 = { 2.5 };
@@ -64,7 +61,6 @@ class SubtractVectorTests {
   }
 
   @Test
-  @DisplayName("subtract: special floating values (Infinity and NaN)")
   void subtractSpecialFloatingValues() {
     double[] v1 = { Double.POSITIVE_INFINITY, Double.NaN };
     double[] v2 = { 0.0, 0.0 };
