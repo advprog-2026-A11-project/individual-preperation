@@ -1,11 +1,12 @@
 plugins {
-  id 'java'
-  id "jacoco"
-  id 'org.springframework.boot' version '4.0.2'
-  id 'io.spring.dependency-management' version '1.1.7'
-  id "org.sonarqube" version "7.2.2.6593"
+    id 'java'
+    id "jacoco"
+    id 'org.springframework.boot' version '4.0.2'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id "org.sonarqube" version "7.2.2.6593"
 
 }
+
 
 
 group = 'com.example'
@@ -13,19 +14,19 @@ version = '0.0.1-SNAPSHOT'
 description = 'Individual preparation for the Advanced Programming course at the Faculty of Computer Science Universitas Indonesia'
 
 java {
-  toolchain {
-    languageVersion = JavaLanguageVersion.of(21)
-  }
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
 }
 
 repositories {
-  mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-  implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-  testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
-  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
@@ -41,7 +42,7 @@ sonar {
 }
 
 jacocoTestReport {
-  reports {
-    xml.required = true
-  }
+    reports {
+        xml.required = true
+    }
 }
