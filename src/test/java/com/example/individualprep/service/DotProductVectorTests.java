@@ -19,7 +19,8 @@ public class DotProductVectorTests {
     double[] v1 = {1.0, 2.0};
     double[] v2 = {3.0, 4.0, 5.0};
 
-    Exception exception = assertThrows(IllegalArgumentException.class, () -> util.dotProduct(v1, v2));
+    Exception exception = assertThrows(IllegalArgumentException.class,
+        () -> util.dotProduct(v1, v2));
     assertEquals("Two vectors must have the same length!", exception.getMessage());
   }
 
@@ -33,7 +34,7 @@ public class DotProductVectorTests {
 
   @Test
   void dotProduct_nullVector() {
-    double[] v2 = {5.0,3.0, 9.0};
+    double[] v2 = {5.0, 3.0, 9.0};
 
     assertThrows(NullPointerException.class, () -> util.dotProduct(null, v2));
   }
