@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -47,7 +48,8 @@ class SubtractVectorTests {
     double[] v1 = { 1.0, 2.0 };
     double[] v2 = { 1.0 };
 
-    IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> util.subtract(v1, v2));
+    IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+        () -> util.subtract(v1, v2));
     assertTrue(ex.getMessage().toLowerCase().contains("same length"));
   }
 
