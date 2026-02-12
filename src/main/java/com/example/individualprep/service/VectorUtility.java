@@ -33,7 +33,9 @@ public class VectorUtility {
     }
 
     double magnitude = Math.sqrt(sum);
-    if (magnitude == 0) return v1;
+    if (magnitude == 0) {
+      return v1;
+    }
 
     double[] result = new double[v1.length];
     for (int i = 0; i < result.length; i++) {
