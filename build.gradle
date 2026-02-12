@@ -29,7 +29,7 @@ tasks.named('test') {
   useJUnitPlatform()
 }
 
-sonarqube {
+sonar {
   properties {
     property "sonar.projectKey", "ADPRO-A-KELOMPOK-11_individual-preperation"
     property "sonar.organization", "adpro-a-kelompok-11"
