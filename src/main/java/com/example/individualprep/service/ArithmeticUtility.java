@@ -9,15 +9,17 @@ public class ArithmeticUtility {
     return 0.0;
   }
 
-  public double subtract(double o1, double o2) {
-    // TODO: Implement me properly!
-    return 0.0;
-  }
-
   public double multiply(final double o1, final double o2) {
     return o2 * o1;
   }
 
+  // Substract two integers
+  public double subtract(double o1, double o2) {
+    // TODO: Implement me properly!
+    return o1 - o2;
+  }
+
+  // divide two integers
   public double divide(double o1, double o2) {
     // TODO: Implement me properly!
     return 0.0;
