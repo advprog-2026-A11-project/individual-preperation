@@ -1,4 +1,4 @@
-package com.example.individualprep.service.Arithmetic;
+package com.example.individualprep.service.arithmetic;
 
 import static org.junit.jupiter.api.Assertions.*;
 
