@@ -3,8 +3,7 @@ package com.example.individualprep.vector;
 import com.example.individualprep.service.VectorUtility;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions;
 
 class MultiplyVectorTests {
 
@@ -23,8 +22,8 @@ class MultiplyVectorTests {
 
     double[] result = util.multiply(v, m);
 
-    assertArrayEquals(expected, result, 1e-9);
-    assertNotSame(v, result, "multiply should return a new array, not modify the original reference");
+    Assertions.assertArrayEquals(expected, result, 1e-9);
+    Assertions.assertNotSame(v, result, "returns new array");
   }
 
   @Test
@@ -34,7 +33,7 @@ class MultiplyVectorTests {
 
     double[] result = util.multiply(v, 0);
 
-    assertArrayEquals(expected, result, 1e-9);
+    Assertions.assertArrayEquals(expected, result, 1e-9);
   }
 
   @Test
@@ -44,7 +43,7 @@ class MultiplyVectorTests {
 
     double[] result = util.multiply(v, -2);
 
-    assertArrayEquals(expected, result, 1e-9);
+    Assertions.assertArrayEquals(expected, result, 1e-9);
   }
 
   @Test
@@ -53,7 +52,7 @@ class MultiplyVectorTests {
 
     double[] result = util.multiply(v, 5);
 
-    assertEquals(0, result.length);
+    Assertions.assertEquals(0, result.length);
   }
 
   @Test
@@ -63,11 +62,11 @@ class MultiplyVectorTests {
 
     util.multiply(v, 4);
 
-    assertArrayEquals(original, v, 1e-9);
+    Assertions.assertArrayEquals(original, v, 1e-9);
   }
 
   @Test
   void multiply_withNull_throwsNullPointerException() {
-    assertThrows(NullPointerException.class, () -> util.multiply(null, 2));
+    Assertions.assertThrows(NullPointerException.class, () -> util.multiply(null, 2));
   }
 }
