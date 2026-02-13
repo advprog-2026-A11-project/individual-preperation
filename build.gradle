@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id "jacoco"
+    id 'checkstyle'
     id 'org.springframework.boot' version '4.0.2'
     id 'io.spring.dependency-management' version '1.1.7'
     id "org.sonarqube" version "7.2.2.6593"
@@ -27,6 +28,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+checkstyle {
+    toolVersion = '10.12.0'
+    configFile = file(".github/checks/google-check.xml")
 }
 
 tasks.named('test') {
