@@ -7,6 +7,7 @@ on:
       - master
       - ci-Tristan
   pull_request:
+    types: [opened, synchronize, reopened]
     branches:
       - main
       - master
@@ -18,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repository
+      # Checkout repository (IMPORTANT for PR analysis)
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -31,7 +32,7 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      # Proper Gradle caching
+      # Setup Gradle cache properly
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
@@ -43,11 +44,12 @@ jobs:
       - name: Build, Test, Coverage
         run: ./gradlew clean test jacocoTestReport
 
-      # SonarCloud analysis
+      # SonarCloud analysis (PR + Branch)
       - name: SonarCloud Scan
         env:
-          # Same token since the one in master is also setup by me
+          # Same token since the one in master is also setup by me (Tristan)
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew sonar --info
 
       # Upload JaCoCo report
