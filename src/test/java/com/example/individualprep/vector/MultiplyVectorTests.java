@@ -1,9 +1,9 @@
 package com.example.individualprep.vector;
 
 import com.example.individualprep.service.VectorUtility;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
 
 class MultiplyVectorTests {
 
