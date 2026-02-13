@@ -5,12 +5,12 @@ on:
     branches:
       - main
       - master
-      - cicd
+      - ci-Tristan
   pull_request:
     branches:
       - main
       - master
-      - cicd
+      - ci-Tristan
 
 jobs:
   build:
